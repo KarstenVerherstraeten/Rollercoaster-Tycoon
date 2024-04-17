@@ -20,10 +20,6 @@ class AttractionService {
         return attractionRepository.save(attraction)
     }
 
-    fun show(id: Long): Attraction {
-        return attractionRepository.getOne(id)
-    }
-
     fun update(attraction: Attraction): Attraction {
         return attractionRepository.save(attraction)
     }
@@ -37,5 +33,5 @@ class AttractionService {
     fun findByName(name: String): Attraction {
         return attractionRepository.findOneByName(name)
     }
-    
+
 }

@@ -9,7 +9,7 @@ data
 class Category (
     @Id
     @GeneratedValue
-    val id: Long = -1,
+    var id: Long = -1,
     val name: String,
 
 ) {
