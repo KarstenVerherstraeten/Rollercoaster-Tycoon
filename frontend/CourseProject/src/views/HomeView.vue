@@ -10,10 +10,12 @@ export default {
 <template>
 	<main>
 		<div class="header">
-			<h1>Rollercoasters</h1>
-			<router-link to="/create">Create</router-link>
+			<h1>Attracties</h1>
+			<router-link to="/create">Voeg attractie toe</router-link>
 		</div>
-
-		<Attractions />
+		<div class="blueRectangle"></div>
+		<div>
+			<Attractions />
+		</div>
 	</main>
 </template>

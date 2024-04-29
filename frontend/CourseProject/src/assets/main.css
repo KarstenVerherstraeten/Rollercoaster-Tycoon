@@ -1,20 +1,48 @@
 @import "./base.css";
+body {
+	background-color: #100431;
+}
 #app {
 	margin: 50px;
+	color: white;
 }
 
 nav a {
 	text-decoration: none;
 	font-size: 20px;
-	color: black;
+	color: white;
 }
 nav a:hover {
-	background-color: rgb(146, 171, 255);
-	color: white;
+	background-color: #d0e2ff;
+	color: #100431;
 	border-radius: 30px;
 }
 
 nav {
 	display: flex;
 	justify-content: flex-end;
+}
+
+/* home */
+
+.header {
+	font-size: 40px;
+	display: flex;
+	align-items: baseline;
+	color: #100431;
+	margin-left: 120px;
+	justify-content: space-between;
+}
+.header a {
+	font-size: 15px;
+	text-decoration: none;
+	color: white;
+}
+.blueRectangle {
+	background-color: #d0e2ff;
+	width: 500px;
+	border-radius: 150px;
+	margin-left: 50px;
+	margin-top: -200px;
+	height: 3000px;
 }
