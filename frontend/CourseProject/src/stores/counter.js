@@ -1,28 +1,12 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { ref, computed } from "vue";
+import { defineStore } from "pinia";
 
-const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
-	routes: [
-		{
-			path: "/",
-			name: "home",
-			component: HomeView,
-		},
-		{
-			path: "/testhome",
-			name: "testhome",
-			// route level code-splitting
-			// this generates a separate chunk (About.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			component: () => import("../views/TestHome.vue"),
-		},
-		{
-			path: "/create",
-			name: "create",
-			component: () => import("../views/CreateView.vue"),
-		},
-	],
+export const useCounterStore = defineStore("counter", () => {
+	const count = ref(0);
+	const doubleCount = computed(() => count.value * 2);
+	function increment() {
+		count.value++;
+	}
+
+	return { count, doubleCount, increment };
 });
-
-export default router;
