@@ -29,5 +29,8 @@ data class Attraction (
 
 ) {
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    var category: Category? = null
 
 }

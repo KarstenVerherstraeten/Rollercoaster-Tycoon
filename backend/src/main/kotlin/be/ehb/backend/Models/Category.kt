@@ -13,4 +13,7 @@ class Category (
     val name: String,
 
 ) {
+
+    @OneToMany
+    var attractions: List<Attraction> = mutableListOf()
 }

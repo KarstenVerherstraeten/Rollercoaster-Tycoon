@@ -1,5 +1,6 @@
 package be.ehb.backend.Controllers
 
+import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
 import be.ehb.backend.Service.AttractionService
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,8 +19,8 @@ class AttractionController {
     }
 
     @PostMapping
-    fun store(@RequestBody attraction: Attraction): Attraction {
-        return attractionService.store(attraction)
+    fun store(@RequestBody createAttractionRequest: CreateAttractionRequest): Attraction {
+        return attractionService.newAttraction(createAttractionRequest)
 
     }
 
