@@ -1,9 +1,12 @@
 package be.ehb.backend.Controllers
 
+import be.ehb.backend.DTO.AttractionResponseDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
 import be.ehb.backend.Service.AttractionService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
@@ -14,14 +17,15 @@ class AttractionController {
     lateinit var attractionService: AttractionService
 
     @GetMapping
-    fun index(): List<Attraction> {
+    fun index(): List<AttractionResponseDTO> {
         return attractionService.index()
     }
 
-    @PostMapping
-    fun store(@RequestBody createAttractionRequest: CreateAttractionRequest): Attraction {
-        return attractionService.newAttraction(createAttractionRequest)
 
+    @PostMapping
+    fun store(@RequestBody createAttractionRequest: CreateAttractionRequest): ResponseEntity<Attraction> {
+        val newAttraction = attractionService.newAttraction(createAttractionRequest)
+        return ResponseEntity(newAttraction, HttpStatus.CREATED)
     }
 
     @PutMapping("{id}")

@@ -1,19 +1,16 @@
 package be.ehb.backend.Models
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import java.util.*
 
-
 @Entity
 @Table(name = "attractions")
-
-data class Attraction (
-
-    // vergeet niet date etc terug niet nullable te maken
-
+data class Attraction(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = -1,
+
     val name: String,
     val buildYear: Int,
     val capacity: Int,
@@ -24,13 +21,10 @@ data class Attraction (
     val fastPass: Boolean,
     val disabled: Boolean,
     val description: String,
-    val maintenancePeriod: Date?
+    val maintenancePeriod: Date?,
 
-
-) {
-
+    @JsonBackReference // This annotation helps break the circular reference
     @ManyToOne
     @JoinColumn(name = "category_id")
     var category: Category? = null
-
-}
+)

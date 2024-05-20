@@ -10,6 +10,7 @@ export default {
 				capacity: "",
 				minHeight: "",
 				maxHeight: "",
+				categoryName: "",
 				fastpass: false,
 				disabled: false,
 			},
@@ -47,15 +48,14 @@ export default {
 				<label for="buildyear">Buildyear:</label>
 				<input type="number" id="buidlyear" v-model="attraction.buildyear" required />
 			</div>
-			<!-- <div class="form-group">
-        <label for="category">Category:</label>
-        <select id="category" v-model="attraction.category" required>
-          <option value="rollercoaster">Rollercoaster</option>
-          <option value="water-ride">Water Ride</option>
-          <option value="carousel">Carousel</option>
-         more optrions here
-        </select>
-      </div> -->
+			<div class="form-group">
+				<label for="category">Category:</label>
+				<select id="category" v-model="attraction.categoryName" required>
+					<option value="Rollercoaster">Rollercoaster</option>
+					<option value="water-ride">Water Ride</option>
+					<option value="carousel">Carousel</option>
+				</select>
+			</div>
 			<div class="form-group">
 				<label for="capacity">Capacity:</label>
 				<input type="number" id="capacity" v-model="attraction.capacity" required />

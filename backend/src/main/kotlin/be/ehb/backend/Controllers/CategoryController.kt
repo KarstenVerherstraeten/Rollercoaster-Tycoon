@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @RequestMapping("categories")
-
 class CategoryController {
 
     @Autowired
@@ -34,6 +33,4 @@ class CategoryController {
     fun destroy(@PathVariable id: Long) {
         categoryService.destroy(id)
     }
-
-
 }
