@@ -1,5 +1,6 @@
 package be.ehb.backend.Controllers
 
+import UpdateAttractionRequest
 import be.ehb.backend.DTO.AttractionResponseDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
@@ -29,10 +30,11 @@ class AttractionController {
     }
 
     @PutMapping("{id}")
-    fun update(@PathVariable id: Long, @RequestBody attraction: Attraction): Attraction {
-        attraction.id = id
-        return attractionService.update(attraction)
+    fun update(@PathVariable id: Long, @RequestBody updateRequest: UpdateAttractionRequest): ResponseEntity<AttractionResponseDTO> {
+        val updatedAttraction = attractionService.updateAttraction(id, updateRequest)
+        return ResponseEntity(updatedAttraction, HttpStatus.OK)
     }
+
     @DeleteMapping("{id}")
     fun destroy(@PathVariable id: Long) {
         attractionService.destroy(id)

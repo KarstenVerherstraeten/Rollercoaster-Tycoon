@@ -1,5 +1,6 @@
 package be.ehb.backend.Service
 
+import UpdateAttractionRequest
 import be.ehb.backend.DTO.AttractionResponseDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
@@ -33,9 +34,38 @@ class AttractionService {
         return attractionRepository.save(attraction)
     }
 
-    fun update(attraction: Attraction): Attraction {
-        return attractionRepository.save(attraction)
+    fun updateAttraction(id: Long, updateRequest: UpdateAttractionRequest): AttractionResponseDTO {
+        val attraction = attractionRepository.findById(id)
+            .orElseThrow { EntityNotFoundException("Attraction not found with id: $id") }
+
+        updateRequest.name?.let { attraction.name = it }
+        updateRequest.buildYear?.let { attraction.buildYear = it }
+        updateRequest.capacity?.let { attraction.capacity = it }
+        updateRequest.picture?.let { attraction.picture = it }
+        updateRequest.video?.let { attraction.video = it }
+        updateRequest.minHeight?.let { attraction.minHeight = it }
+        updateRequest.maxHeight?.let { attraction.maxHeight = it }
+        updateRequest.fastPass?.let { attraction.fastPass = it }
+        updateRequest.disabled?.let { attraction.disabled = it }
+        updateRequest.description?.let { attraction.description = it }
+
+        // Parse maintenancePeriod if not null
+        updateRequest.maintenancePeriod?.let {
+            val maintenanceDate = Date(it)
+            attraction.maintenancePeriod = maintenanceDate
+        }
+
+        updateRequest.categoryName?.let {
+            val category = categoryRepository.findByName(it)
+                .orElseThrow { EntityNotFoundException("Category not found with name: $it") }
+            categoryService.addAttractionToCategory(category, attraction)
+        }
+
+        // Save the updated attraction
+        val updatedAttraction = attractionRepository.save(attraction)
+        return AttractionResponseDTO.fromAttraction(updatedAttraction)
     }
+
 
     fun destroy(id: Long) {
         attractionRepository.deleteById(id)

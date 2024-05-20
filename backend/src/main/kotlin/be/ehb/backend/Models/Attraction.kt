@@ -11,17 +11,17 @@ data class Attraction(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = -1,
 
-    val name: String,
-    val buildYear: Int,
-    val capacity: Int,
-    val picture: String?,
-    val video: String?,
-    val minHeight: Int,
-    val maxHeight: Int,
-    val fastPass: Boolean,
-    val disabled: Boolean,
-    val description: String,
-    val maintenancePeriod: Date?,
+    var name: String,
+    var buildYear: Int,
+    var capacity: Int,
+    var picture: String?,
+    var video: String?,
+    var minHeight: Int,
+    var maxHeight: Int,
+    var fastPass: Boolean,
+    var disabled: Boolean,
+    var description: String,
+    var maintenancePeriod: Date?,
 
     @JsonBackReference // This annotation helps break the circular reference
     @ManyToOne

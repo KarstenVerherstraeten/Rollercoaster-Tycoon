@@ -10,5 +10,5 @@ data class UpdateAttractionRequest(
     val disabled: Boolean?,
     val description: String?,
     val maintenancePeriod: Long?,
-    val categoryName: String? // Include category name for category updates
+    val categoryName: String?
 )
