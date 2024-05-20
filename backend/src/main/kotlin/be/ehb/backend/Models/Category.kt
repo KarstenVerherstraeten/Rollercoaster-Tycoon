@@ -10,7 +10,7 @@ data class Category(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = -1,
 
-    val name: String,
+    var name: String,
 
     @JsonManagedReference // This annotation helps break the circular reference
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], orphanRemoval = true)
