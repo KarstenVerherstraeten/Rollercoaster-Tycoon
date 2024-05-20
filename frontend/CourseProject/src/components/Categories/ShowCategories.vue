@@ -1,12 +1,14 @@
 <script>
 
 import Category from './Category.vue';
+import DeleteCategories from './DeleteCategories.vue';
 
 
 
 export default {
     components: {
         Category,
+        DeleteCategories,
     },
     data() {
         return {
@@ -36,10 +38,13 @@ export default {
 
 <template>
     <div class="Categories">
+        <ErrorPopup />
         <div class="category" v-for="category in Categories" :key="category.id">
             <div class="category-details">
                 <h3>{{ category.name }}</h3>
+                
             </div>
+            <DeleteCategories :id="category.id" @category-deleted="handleCategoryDeleted"></DeleteCategories>
         </div>
     </div>
 </template>
