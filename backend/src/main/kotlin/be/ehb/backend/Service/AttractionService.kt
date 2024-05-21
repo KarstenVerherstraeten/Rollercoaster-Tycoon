@@ -126,6 +126,7 @@ class AttractionService {
             breakdowns = attraction.breakdowns.map { Breakdown -> BreakdownResponseDTO(
                 id = Breakdown.id,
                 attractionId = Breakdown.attraction.id,
+                attractionName = Breakdown.attraction.name,
                 date = Breakdown.date,
                 resolved = Breakdown.resolved
             ) }

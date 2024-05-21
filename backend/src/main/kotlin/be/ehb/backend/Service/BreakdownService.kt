@@ -41,6 +41,7 @@ class BreakdownService {
         return BreakdownResponseDTO(
             id = savedBreakdown.id,
             attractionId = savedBreakdown.attraction.id,
+            attractionName = savedBreakdown.attraction.name,
             date = savedBreakdown.date,
             resolved = savedBreakdown.resolved
         )
@@ -52,6 +53,7 @@ class BreakdownService {
             BreakdownResponseDTO(
                 id = breakdown.id,
                 attractionId = breakdown.attraction.id,
+                attractionName = breakdown.attraction.name,
                 date = breakdown.date,
                 resolved = breakdown.resolved
             )
@@ -68,6 +70,7 @@ class BreakdownService {
         return BreakdownResponseDTO(
             id = updatedBreakdown.id,
             attractionId = updatedBreakdown.attraction.id,
+            attractionName = updatedBreakdown.attraction.name,
             date = updatedBreakdown.date,
             resolved = updatedBreakdown.resolved
         )

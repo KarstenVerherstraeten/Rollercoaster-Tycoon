@@ -6,6 +6,7 @@ import java.util.*
 data class BreakdownResponseDTO(
     val id: Long,
     val attractionId: Long,
+    val attractionName: String,
     val date: Date,
     val resolved: Boolean
 ) {
@@ -14,6 +15,7 @@ data class BreakdownResponseDTO(
             return BreakdownResponseDTO(
                 id = breakdown.id,
                 attractionId = breakdown.attraction.id,
+                attractionName = breakdown.attraction.name,
                 date = breakdown.date,
                 resolved = breakdown.resolved
             )
