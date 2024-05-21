@@ -4,11 +4,13 @@
 import DeleteAttracions from "./DeleteAttractions.vue";
 import EditAttraction from "./EditAttraction.vue";
 import picture from "../../assets/attractiePicture.jpg"
+import ReportBreakdown from "../Breakdowns/ReportBreakdown.vue";
 
 export default {
 	components: {
 		DeleteAttracions,
 		EditAttraction,
+		ReportBreakdown
 	},
 	data() {
 		return {
@@ -71,6 +73,8 @@ export default {
 				<DeleteAttracions :id="attraction.id" @attraction-deleted="handleAttractionDeleted"></DeleteAttracions>
 				<EditAttraction :id="attraction.id" :name="attraction.name" :description="attraction.description"
 					@attraction-edited="handelAttrationEdited"></EditAttraction>
+				<ReportBreakdown :attractionId="attraction.id" @breakdown-reported="handleBreakdownReported"></ReportBreakdown>
+
 			</div>
 		</div>
 	</div>
