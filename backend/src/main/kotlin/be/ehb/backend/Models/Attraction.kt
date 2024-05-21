@@ -26,5 +26,8 @@ data class Attraction(
     @JsonBackReference // This annotation helps break the circular reference
     @ManyToOne
     @JoinColumn(name = "category_id")
-    var category: Category? = null
+    var category: Category? = null,
+
+    @OneToMany(mappedBy = "attraction", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var breakdowns: List<Breakdown> = mutableListOf()
 )

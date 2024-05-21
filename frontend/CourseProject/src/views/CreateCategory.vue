@@ -2,13 +2,13 @@
 export default {
 	data() {
 		return {
-			attraction: {
+			category: {
 				name: "",
 			},
 		};
 	},
 	methods: {
-		createAttraction() {
+		createCategory() {
 			fetch("http://localhost:1234/categories", {
 				method: "POST",
 				body: JSON.stringify(this.category),
@@ -29,7 +29,7 @@ export default {
 
     <form action="">
         <label for="name">Name</label>
-        <input type="text" id="name" v-model="name" />
+        <input type="text" id="name" v-model="category.name" />
         <button @click="createCategory()">Create</button>
         <p v-if="errorMessage">{{ errorMessage }}</p>
 

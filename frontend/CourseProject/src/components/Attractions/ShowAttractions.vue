@@ -1,19 +1,19 @@
 <!-- got helped by GPT and Copilot & previous exersices -->
 
 <script>
-import Attraction from "./Attraction.vue";
 import DeleteAttracions from "./DeleteAttractions.vue";
 import EditAttraction from "./EditAttraction.vue";
+import picture from "../../assets/attractiePicture.jpg"
 
 export default {
 	components: {
-		Attraction,
 		DeleteAttracions,
 		EditAttraction,
 	},
 	data() {
 		return {
 			Attractions: [],
+			picture: picture,
 		};
 	},
 	methods: {
@@ -49,13 +49,28 @@ export default {
 <template>
 	<div class="Attractions">
 		<div class="attraction" v-for="attraction in Attractions" :key="attraction.id">
-			<div class="attraction-details">
-				<h3>{{ attraction.name }}</h3>
+			<div class="attraction-info">
+				<img class="picture" :src="picture" alt="fotos">
+				<div>
+					<div class="attraction-name">
+						<h3>{{ attraction.name }}</h3>
+					</div>
+					<div class="attraction-info2">
+						<h3>{{ attraction.categoryName }}</h3>
+						<h3>{{ attraction.minHeight }}</h3>
+					</div>
+				</div>
+				<div>
+				<h3>Beschrijving:</h3>
 				<p>{{ attraction.description }}</p>
 			</div>
+			</div>
+
+
 			<div class="attraction-actions">
 				<DeleteAttracions :id="attraction.id" @attraction-deleted="handleAttractionDeleted"></DeleteAttracions>
-				<EditAttraction :id="attraction.id" :name="attraction.name" :description="attraction.description" @attraction-edited="handelAttrationEdited"></EditAttraction>
+				<EditAttraction :id="attraction.id" :name="attraction.name" :description="attraction.description"
+					@attraction-edited="handelAttrationEdited"></EditAttraction>
 			</div>
 		</div>
 	</div>

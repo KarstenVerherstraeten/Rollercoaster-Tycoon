@@ -1,14 +1,20 @@
 package be.ehb.backend.Models
 
 import jakarta.persistence.*
+import java.util.*
+
 @Entity
 @Table(name = "breakdowns")
-data
-class Breakdown(
+data class Breakdown(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = -1,
-    val attractionId: Long,
-    val date: String
-) {
-}
+
+    @ManyToOne
+    @JoinColumn(name = "attraction_id")
+    val attraction: Attraction,
+
+    val date: Date,
+
+    var resolved: Boolean = false
+)

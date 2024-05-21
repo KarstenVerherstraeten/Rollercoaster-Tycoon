@@ -38,7 +38,7 @@ export default {
 
 <template>
     <div class="Categories">
-        <ErrorPopup />
+
         <div class="category" v-for="category in Categories" :key="category.id">
             <div class="category-details">
                 <h3>{{ category.name }}</h3>

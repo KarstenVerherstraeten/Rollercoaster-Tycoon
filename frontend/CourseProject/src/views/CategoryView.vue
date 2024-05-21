@@ -10,6 +10,7 @@ export default {
 </script>
 
 <template>
+    <router-link to="/CreateCategory">Voeg categorie toe</router-link>
     <main>
         <Categories />
     </main>

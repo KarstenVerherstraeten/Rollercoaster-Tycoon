@@ -1,6 +1,7 @@
 package be.ehb.backend.DTO
 
 import be.ehb.backend.Models.Attraction
+import java.util.*
 
 data class AttractionResponseDTO(
     val id: Long,
@@ -14,8 +15,9 @@ data class AttractionResponseDTO(
     val fastPass: Boolean,
     val disabled: Boolean,
     val description: String,
-    val maintenancePeriod: String,
-    val categoryName: String? // Include category name in the DTO
+    val categoryName: String?,
+    val maintenancePeriod: Date?,
+    val breakdowns: List<BreakdownResponseDTO>
 ) {
     companion object {
         fun fromAttraction(attraction: Attraction): AttractionResponseDTO {
@@ -31,8 +33,9 @@ data class AttractionResponseDTO(
                 fastPass = attraction.fastPass,
                 disabled = attraction.disabled,
                 description = attraction.description,
-                maintenancePeriod = attraction.maintenancePeriod.toString(), // Convert Date to String
-                categoryName = attraction.category?.name // Get category name or null if category is null
+                maintenancePeriod = attraction.maintenancePeriod,
+                categoryName = attraction.category?.name, // Get category name or null if category is null
+                breakdowns = attraction.breakdowns.map { BreakdownResponseDTO.fromBreakdown(it) }
             )
         }
     }

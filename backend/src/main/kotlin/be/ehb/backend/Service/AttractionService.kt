@@ -2,8 +2,10 @@ package be.ehb.backend.Service
 
 import UpdateAttractionRequest
 import be.ehb.backend.DTO.AttractionResponseDTO
+import be.ehb.backend.DTO.BreakdownResponseDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
+import be.ehb.backend.Models.Breakdown
 import be.ehb.backend.Models.Category
 import be.ehb.backend.Repositories.AttractionRepository
 import be.ehb.backend.Repositories.CategoryRepository
@@ -104,5 +106,29 @@ class AttractionService {
         categoryService.addAttractionToCategory(category, savedAttraction)
 
         return savedAttraction
+    }
+
+    fun mapToAttractionResponseDTO(attraction: Attraction): AttractionResponseDTO {
+        return AttractionResponseDTO(
+            id = attraction.id,
+            name = attraction.name,
+            buildYear = attraction.buildYear,
+            capacity = attraction.capacity,
+            picture = attraction.picture,
+            video = attraction.video,
+            minHeight = attraction.minHeight,
+            maxHeight = attraction.maxHeight,
+            fastPass = attraction.fastPass,
+            disabled = attraction.disabled,
+            description = attraction.description,
+            maintenancePeriod = attraction.maintenancePeriod,
+            categoryName = attraction.category?.name,
+            breakdowns = attraction.breakdowns.map { Breakdown -> BreakdownResponseDTO(
+                id = Breakdown.id,
+                attractionId = Breakdown.attraction.id,
+                date = Breakdown.date,
+                resolved = Breakdown.resolved
+            ) }
+        )
     }
 }

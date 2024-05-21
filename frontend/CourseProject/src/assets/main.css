@@ -46,3 +46,33 @@ nav {
 	margin-top: -200px;
 	height: 3000px;
 }
+.attraction-info{
+	display: flex;
+	flex-direction: column;
+}
+.picture{
+	width: 40%;
+}
+.attraction-info{
+	display: flex;
+	flex-direction: row
+}
+.attraction-name{
+	background-color: aliceblue;
+	border-radius: 30px;
+	color: black;
+	font-size: 30px;
+}
+.attraction-name h3{
+	padding: 0px 20px;
+}
+.attraction-info div{
+	margin-left: 40px;
+}
+.attraction-info2{
+	display: flex;
+	flex-direction: row;
+}
+.attraction-info2 h3{
+	margin-right: 20px;
+}
