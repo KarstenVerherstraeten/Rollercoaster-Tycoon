@@ -21,6 +21,12 @@ class BreakdownService {
     private lateinit var attractionRepository: AttractionRepository
 
     @Transactional
+
+    fun index(): List<BreakdownResponseDTO> {
+        val breakdowns = breakdownRepository.findAll()
+        return breakdowns.map { BreakdownResponseDTO.fromBreakdown(it) }
+    }
+
     fun registerBreakdown(breakdownRequestDTO: BreakdownRequestDTO): BreakdownResponseDTO {
         val attraction = attractionRepository.findById(breakdownRequestDTO.attractionId)
             .orElseThrow { EntityNotFoundException("Attraction not found with id: ${breakdownRequestDTO.attractionId}") }

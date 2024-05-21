@@ -21,6 +21,11 @@ class BreakdownController {
         return ResponseEntity.ok(breakdown)
     }
 
+    @GetMapping
+    fun index(): ResponseEntity<List<BreakdownResponseDTO>> {
+        val breakdowns = breakdownService.index()
+        return ResponseEntity.ok(breakdowns)
+    }
     @GetMapping("attraction/{attractionId}")
     fun getBreakdownsForAttraction(@PathVariable attractionId: Long): ResponseEntity<List<BreakdownResponseDTO>> {
         val breakdowns = breakdownService.getBreakdownsForAttraction(attractionId)
