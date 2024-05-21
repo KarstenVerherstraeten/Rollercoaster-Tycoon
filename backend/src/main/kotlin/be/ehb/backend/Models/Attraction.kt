@@ -28,6 +28,8 @@ data class Attraction(
     @JoinColumn(name = "category_id")
     var category: Category? = null,
 
-    @OneToMany(mappedBy = "attraction", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "attraction")
     var breakdowns: List<Breakdown> = mutableListOf()
 )
+

@@ -1,5 +1,6 @@
 package be.ehb.backend.Models
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import java.util.*
 
@@ -10,7 +11,8 @@ data class Breakdown(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = -1,
 
-    @ManyToOne
+    @JsonBackReference // Prevents circular reference during serialization
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attraction_id")
     val attraction: Attraction,
 
@@ -18,3 +20,4 @@ data class Breakdown(
 
     var resolved: Boolean = false
 )
+
