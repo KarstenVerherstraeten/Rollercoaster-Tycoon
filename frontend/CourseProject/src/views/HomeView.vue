@@ -13,9 +13,10 @@ export default {
 			<h1>Attracties</h1>
 			<router-link to="/create">Voeg attractie toe</router-link>
 		</div>
-		<div class="blueRectangle"></div>
-		<div>
-			<Attractions />
+		<div class="blueRectangle">
+			<div class="content-wrapper">
+				<Attractions />
+			</div>
 		</div>
 	</main>
 </template>

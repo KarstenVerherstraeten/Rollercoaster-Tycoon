@@ -1,17 +1,17 @@
 <script>
-
 import Categories from "@/components/Categories/ShowCategories.vue";
 
 export default {
-    components: {
-        Categories,
-    },
+	components: {
+		Categories,
+	},
 };
 </script>
 
 <template>
-    <router-link to="/CreateCategory">Voeg categorie toe</router-link>
-    <main>
-        <Categories />
-    </main>
+	<h1>Maak hier een categorie</h1>
+	<router-link class="createCategoryButton" to="/CreateCategory">Voeg categorie toe</router-link>
+	<main>
+		<Categories />
+	</main>
 </template>

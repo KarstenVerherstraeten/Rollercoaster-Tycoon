@@ -1,14 +1,15 @@
+<template>
+	<main>
+		<DetailAttractions />
+	</main>
+</template>
+
 <script>
-import Attractions from "@/components/Attractions/ShowAttractions.vue";
+import DetailAttractions from "../components/Attractions/DetailAttractions.vue";
+
 export default {
 	components: {
-		Attractions,
+		DetailAttractions,
 	},
 };
 </script>
-
-<template>
-	<main>
-		<Attractions />
-	</main>
-</template>

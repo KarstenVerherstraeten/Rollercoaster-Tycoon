@@ -1,7 +1,13 @@
 @import "./base.css";
+
 body {
 	background-color: #100431;
 }
+
+.material-symbols-outlined {
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
 #app {
 	margin: 50px;
 	color: white;
@@ -12,6 +18,7 @@ nav a {
 	font-size: 20px;
 	color: white;
 }
+
 nav a:hover {
 	background-color: #d0e2ff;
 	color: #100431;
@@ -29,50 +36,123 @@ nav {
 	font-size: 40px;
 	display: flex;
 	align-items: baseline;
-	color: #100431;
+	color: #d0e2ff;
 	margin-left: 120px;
 	justify-content: space-between;
 }
+
 .header a {
 	font-size: 15px;
 	text-decoration: none;
 	color: white;
 }
+.header h1 {
+	z-index: 3;
+	color: black;
+	margin-left: 20px;
+}
+
 .blueRectangle {
 	background-color: #d0e2ff;
 	width: 500px;
 	border-radius: 150px;
 	margin-left: 50px;
+	padding: 20px; /* Adding padding to prevent content from touching the edges */
 	margin-top: -200px;
-	height: 3000px;
+	min-height: 1000px; /* Ensures a minimum height */
+	height: auto; /* Allows the height to adjust based on content */
+	z-index: 1;
+	position: relative;
 }
-.attraction-info{
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 150px;
+}
+
+.attraction-info {
 	display: flex;
 	flex-direction: column;
 }
-.picture{
+
+.picture {
 	width: 40%;
 }
-.attraction-info{
+
+.attraction-info {
 	display: flex;
-	flex-direction: row
+	flex-direction: row;
+	padding: 20px;
 }
-.attraction-name{
+
+.attraction-name {
 	background-color: aliceblue;
 	border-radius: 30px;
 	color: black;
 	font-size: 30px;
 }
-.attraction-name h3{
+
+.attraction-name h3 {
 	padding: 0px 20px;
+	margin-left: 7px;
 }
-.attraction-info div{
-	margin-left: 40px;
+
+.info {
+	margin-left: 60px;
 }
-.attraction-info2{
+.Description {
+	margin-top: 80px;
+	margin-left: 100px;
+}
+.Description p {
+	width: 400px;
+	display: flex;
+}
+.attraction-info2 {
 	display: flex;
 	flex-direction: row;
+	margin-left: 50px;
 }
-.attraction-info2 h3{
+
+.attraction-info2 h3 {
 	margin-right: 20px;
+}
+
+.attraction {
+	background-color: white;
+	border-radius: 30px;
+	color: black;
+	margin-top: 50px;
+	width: 250%;
+}
+.attraction-actions {
+	display: flex;
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.attraction-actions button {
+	background-color: #100431;
+	margin: 15px;
+	color: white;
+	padding: 10px;
+	border-radius: 20px;
+	width: 150px;
+	border-style: none;
+}
+.buttonsHome {
+	display: flex;
+}
+.arrowButton {
+	border-radius: 20px;
+	border-style: none;
+	align-items: center;
+	padding: 0px 20px;
+	display: flex;
+	margin-left: 20px;
+}
+.createCategoryButton {
+	color: white;
+	text-decoration: none;
 }
