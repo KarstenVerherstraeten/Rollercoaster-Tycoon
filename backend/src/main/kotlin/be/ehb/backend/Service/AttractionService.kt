@@ -78,6 +78,10 @@ class AttractionService {
         return attractionRepository.findOneByName(name)
     }
 
+    fun findById(id: Long): Attraction {
+        return attractionRepository.findById(id).orElse(null)
+    }
+
     fun getAttractionById(id: Long): Attraction? {
         return attractionRepository.findById(id).orElse(null)
     }

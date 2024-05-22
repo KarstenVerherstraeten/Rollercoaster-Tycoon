@@ -49,4 +49,9 @@ class AttractionController {
     fun findByName(@PathVariable name: String): Attraction {
         return attractionService.findByName(name)
     }
+
+    @GetMapping("{id}")
+    fun findById(@PathVariable id: Long): Attraction {
+        return attractionService.findById(id)
+    }
 }
