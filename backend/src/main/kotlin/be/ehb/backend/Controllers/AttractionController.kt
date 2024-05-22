@@ -4,6 +4,7 @@ import UpdateAttractionRequest
 import be.ehb.backend.DTO.AttractionResponseDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
+import be.ehb.backend.Repositories.AttractionRepository
 import be.ehb.backend.Service.AttractionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -21,7 +22,6 @@ class AttractionController {
     fun index(): List<AttractionResponseDTO> {
         return attractionService.index()
     }
-
 
     @PostMapping
     fun store(@RequestBody createAttractionRequest: CreateAttractionRequest): ResponseEntity<Attraction> {
