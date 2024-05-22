@@ -1,4 +1,10 @@
 package be.ehb.backend.Repositories
 
-interface ScareFactorRepository {
+import be.ehb.backend.Models.ScareFactor
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
+
+@Repository
+interface ScareFactorRepository : JpaRepository<ScareFactor, Long> {
+    fun findByAttractionId(attractionId: Long): List<ScareFactor>
 }

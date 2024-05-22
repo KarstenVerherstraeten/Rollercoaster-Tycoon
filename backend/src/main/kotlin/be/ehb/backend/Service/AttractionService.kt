@@ -3,6 +3,7 @@ package be.ehb.backend.Service
 import UpdateAttractionRequest
 import be.ehb.backend.DTO.AttractionResponseDTO
 import be.ehb.backend.DTO.BreakdownResponseDTO
+import be.ehb.backend.DTO.ScareFactorDTO
 import be.ehb.backend.DTO.CreateAttractionRequest
 import be.ehb.backend.Models.Attraction
 import be.ehb.backend.Models.Breakdown
@@ -77,6 +78,10 @@ class AttractionService {
         return attractionRepository.findOneByName(name)
     }
 
+    fun getAttractionById(id: Long): Attraction? {
+        return attractionRepository.findById(id).orElse(null)
+    }
+
     @Transactional
     fun newAttraction(attractionRequest: CreateAttractionRequest): Attraction {
         val optionalCategory: Optional<Category> = categoryRepository.findByName(attractionRequest.categoryName)
@@ -123,13 +128,9 @@ class AttractionService {
             description = attraction.description,
             maintenancePeriod = attraction.maintenancePeriod,
             categoryName = attraction.category?.name,
-            breakdowns = attraction.breakdowns.map { Breakdown -> BreakdownResponseDTO(
-                id = Breakdown.id,
-                attractionId = Breakdown.attraction.id,
-                attractionName = Breakdown.attraction.name,
-                date = Breakdown.date,
-                resolved = Breakdown.resolved
-            ) }
+            breakdowns = attraction.breakdowns.map { BreakdownResponseDTO.fromBreakdown(it) },
+            scareFactors = attraction.scareFactors.map { ScareFactorDTO.fromScareFactor(it) }
         )
     }
 }
+

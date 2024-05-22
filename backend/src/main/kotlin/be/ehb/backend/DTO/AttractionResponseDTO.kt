@@ -17,7 +17,8 @@ data class AttractionResponseDTO(
     val description: String,
     val categoryName: String?,
     val maintenancePeriod: Date?,
-    val breakdowns: List<BreakdownResponseDTO>
+    val breakdowns: List<BreakdownResponseDTO>,
+    val scareFactors: List<ScareFactorDTO>
 ) {
     companion object {
         fun fromAttraction(attraction: Attraction): AttractionResponseDTO {
@@ -34,8 +35,9 @@ data class AttractionResponseDTO(
                 disabled = attraction.disabled,
                 description = attraction.description,
                 maintenancePeriod = attraction.maintenancePeriod,
-                categoryName = attraction.category?.name, // Get category name or null if category is null
-                breakdowns = attraction.breakdowns.map { BreakdownResponseDTO.fromBreakdown(it) }
+                categoryName = attraction.category?.name,
+                breakdowns = attraction.breakdowns.map { BreakdownResponseDTO.fromBreakdown(it) },
+                scareFactors = attraction.scareFactors.map { ScareFactorDTO.fromScareFactor(it) }
             )
         }
     }
