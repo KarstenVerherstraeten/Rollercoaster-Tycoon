@@ -2,6 +2,18 @@
 	<div class="DetailPage">
 		<div v-if="selectedAttraction">
 			<h1>{{ selectedAttraction.name }}</h1>
+
+			<div>
+				<p><strong>Video:</strong></p>
+				<iframe
+					width="100%"
+					height="356"
+					:src="`${selectedAttraction.video}`"
+					title="YouTube video player"
+					frameborder="0"
+					allowfullscreen
+				></iframe>
+			</div>
 			<div>
 				<p><strong>Description:</strong> {{ selectedAttraction.description }}</p>
 				<p><strong>Build Year:</strong> {{ selectedAttraction.buildyear }}</p>
@@ -10,7 +22,7 @@
 				<p><strong>Minimum Height:</strong> {{ selectedAttraction.minHeight }}</p>
 				<p><strong>Maximum Height:</strong> {{ selectedAttraction.maxHeight }}</p>
 				<p><strong>Fastpass:</strong> {{ selectedAttraction.fastpass ? "Yes" : "No" }}</p>
-				<p><strong>Disabled:</strong> {{ selectedAttraction.disabled ? "Yes" : "No" }}</p>
+				<p><strong>breakdowns:</strong> {{ selectedAttraction.breakdowns.length }}</p>
 			</div>
 		</div>
 		<div v-else>
@@ -57,5 +69,40 @@ export default {
 </script>
 
 <style scoped>
-/* Stijlen hier toevoegen */
+.DetailPage {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #1b1b38;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.DetailPage h1 {
+	color: #d0e2ff;
+	font-size: 2.5em;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.attraction-details {
+	background-color: #282a36;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.attraction-details p {
+	margin: 10px 0;
+	font-size: 1.2em;
+}
+
+.attraction-details strong {
+	color: #d0e2ff;
+}
+
+.loading {
+	text-align: center;
+	font-size: 1.5em;
+	color: #d0e2ff;
+}
 </style>
