@@ -20,8 +20,9 @@
 				<p><strong>Capacity:</strong> {{ selectedAttraction.capacity }}</p>
 				<p><strong>Minimum Height:</strong> {{ selectedAttraction.minHeight }}</p>
 				<p><strong>Maximum Height:</strong> {{ selectedAttraction.maxHeight }}</p>
-				<p><strong>Fastpass:</strong> {{ selectedAttraction.fastpass ? "Yes" : "No" }}</p>
-				<p><strong>breakdowns:</strong> {{ selectedAttraction.breakdowns.length }}</p>
+				<p><strong>Fastpass:</strong> {{ selectedAttraction.fastPass ? "Yes" : "No" }}</p>
+				<p><strong>Breakdowns:</strong> {{ selectedAttraction.breakdowns.length }}</p>
+				<p><strong>Next Maintenance Date:</strong> {{ nextMaintenanceDate }}</p>
 			</div>
 		</div>
 		<div v-else>
@@ -35,15 +36,15 @@ export default {
 	data() {
 		return {
 			selectedAttraction: null,
+			nextMaintenanceDate: null,
 		};
 	},
 	created() {
-		// Haal de attractie-id op uit de route-parameters
 		const attractionId = this.$route.params.id;
-		// Roep de methode getAttraction aan om de gegevens van de attractie op te halen
 		this.getAttraction(attractionId).then((attraction) => {
 			if (attraction) {
 				this.selectedAttraction = attraction;
+				this.calculateNextMaintenanceDate();
 			} else {
 				console.error("Attraction not found with ID:", attractionId);
 			}
@@ -63,7 +64,24 @@ export default {
 				return null;
 			}
 		},
-	},
+		calculateNextMaintenanceDate() {
+			if (!this.selectedAttraction) return;
+
+			const breakdowns = this.selectedAttraction.breakdowns;
+			const lastBreakdownDate = breakdowns.length
+				? new Date(Math.max(...breakdowns.map(b => new Date(b.date).getTime())))
+				: null;
+
+			const defaultPeriod = 2; // Default maintenance period in days
+			const maintenancePeriod = this.selectedAttraction.maintenancePeriod || defaultPeriod;
+
+			const nextMaintenance = lastBreakdownDate
+				? new Date(lastBreakdownDate.getTime() + maintenancePeriod * 24 * 60 * 60 * 1000)
+				: new Date(Date.now() + defaultPeriod * 24 * 60 * 60 * 1000);
+
+			this.nextMaintenanceDate = nextMaintenance.toLocaleDateString();
+		}
+	}
 };
 </script>
 
