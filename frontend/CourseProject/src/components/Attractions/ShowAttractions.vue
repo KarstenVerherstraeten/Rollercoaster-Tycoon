@@ -56,7 +56,7 @@ export default {
 	<div class="Attractions">
 		<div class="attraction" v-for="attraction in Attractions" :key="attraction.id">
 			<div class="attraction-info">
-				<img class="picture" :src="picture" alt="fotos" />
+				<img class="picture" :src="attraction.picture" alt="Foto 😢" />
 				<div class="info">
 					<div class="attraction-name">
 						<h3>{{ attraction.name }}</h3>
