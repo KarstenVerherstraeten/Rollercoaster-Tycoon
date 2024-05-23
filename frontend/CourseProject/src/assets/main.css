@@ -148,6 +148,9 @@ nav {
 	background-color: #d0e2ff;
 	color: black;
 }
+.picture {
+	max-height: 200px;
+}
 .editButtons {
 	display: flex;
 	flex-direction: column;
