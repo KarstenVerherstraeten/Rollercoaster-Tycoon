@@ -25,7 +25,7 @@ export default {
 					body: JSON.stringify({
 						name: this.editedName,
 						description: this.editedDescription,
-						buildyear: this.editedBuildyear,
+						buildYear: this.editedBuildyear,
 						capacity: this.editedCapacity,
 						minHeight: this.editedMinHeight,
 						maxHeight: this.editedMaxHeight,
