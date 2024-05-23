@@ -13,6 +13,7 @@ export default {
 				categoryName: "",
 				fastpass: false,
 				disabled: false,
+				picture: "", // Toegevoegd veld voor foto URL
 			},
 		};
 	},
@@ -74,7 +75,7 @@ export default {
 			</div>
 			<div class="form-group">
 				<label for="url">Foto url:</label>
-				<input type="url" name="url" id="url" placeholder="https://image.com" pattern="https://.*" size="30" required />
+				<input type="url" id="url" v-model="attraction.picture" placeholder="https://image.com" pattern="https://.*" size="30" required />
 			</div>
 			<div class="form-group">
 				<label for="url1">Video url:</label>

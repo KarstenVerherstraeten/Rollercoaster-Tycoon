@@ -3,7 +3,6 @@
 <script>
 import DeleteAttracions from "./DeleteAttractions.vue";
 import EditAttraction from "./EditAttraction.vue";
-import picture from "../../assets/attractiePicture.jpg";
 import ReportBreakdown from "../Breakdowns/ReportBreakdown.vue";
 
 export default {
@@ -15,17 +14,14 @@ export default {
 	data() {
 		return {
 			Attractions: [],
-			picture: picture,
 		};
 	},
 	methods: {
 		async getAttractions() {
 			const currentComponent = this;
 			fetch("http://localhost:1234/attractions")
-				.then(function (response) {
-					return response.json();
-				})
-				.then(function (data) {
+				.then((response) => response.json())
+				.then((data) => {
 					currentComponent.Attractions = data;
 				});
 		},
@@ -41,7 +37,6 @@ export default {
 			});
 		},
 		goToDetailPage(attraction) {
-			// Navigeer naar de detailpagina met behulp van Vue Router
 			this.$router.push({ name: "AttractionView", params: { id: attraction.id } });
 		},
 	},
@@ -56,7 +51,7 @@ export default {
 	<div class="Attractions">
 		<div class="attraction" v-for="attraction in Attractions" :key="attraction.id">
 			<div class="attraction-info">
-				<img class="picture" :src="attraction.picture" alt="Foto 😢" />
+				<img class="picture" :src="attraction.picture" alt="Foto" />
 				<div class="info">
 					<div class="attraction-name">
 						<h3>{{ attraction.name }}</h3>
