@@ -16,7 +16,7 @@
 			</div>
 			<div>
 				<p><strong>Description:</strong> {{ selectedAttraction.description }}</p>
-				<p><strong>Build Year:</strong> {{ selectedAttraction.buildyear }}</p>
+				<p><strong>Build Year:</strong> {{ selectedAttraction.buildYear }}</p>
 				<p><strong>Category:</strong> {{ selectedAttraction.categoryName }}</p>
 				<p><strong>Capacity:</strong> {{ selectedAttraction.capacity }}</p>
 				<p><strong>Minimum Height:</strong> {{ selectedAttraction.minHeight }}</p>
