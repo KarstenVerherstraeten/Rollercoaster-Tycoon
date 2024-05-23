@@ -144,6 +144,18 @@ nav {
 .buttonsHome {
 	display: flex;
 }
+.attraction-actions button:active {
+	background-color: #d0e2ff;
+	color: black;
+}
+.editButtons {
+	display: flex;
+	flex-direction: column;
+	width: 370px;
+}
+.editButtons input {
+	width: 350px;
+}
 .arrowButton {
 	border-radius: 20px;
 	border-style: none;
@@ -151,8 +163,31 @@ nav {
 	padding: 0px 20px;
 	display: flex;
 	margin-left: 20px;
+	flex-direction: row-reverse;
+}
+.arrowButton a {
+	text-decoration: none;
+	color: black;
 }
 .createCategoryButton {
 	color: white;
 	text-decoration: none;
+}
+.category {
+	background-color: aliceblue;
+	color: black;
+	border-radius: 30px;
+	display: flex;
+	margin-top: 30px;
+	width: auto;
+	flex-direction: column;
+}
+.category h3 {
+	margin-left: 20px;
+}
+.categoryButton {
+	display: flex;
+}
+.categoryButton button {
+	margin-left: 40px;
 }

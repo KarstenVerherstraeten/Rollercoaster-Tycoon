@@ -52,11 +52,15 @@ export default {
 
 <template>
 	<div>
-		<div v-if="isEditMode">
-			<input v-model="editedName" type="text" />
-			<input v-model="editedDescription" type="text" />
-			<button @click="editAttraction(id)">Save</button>
-			<button @click="cancelEditMode()">Cancel</button>
+		<div v-if="isEditMode" class="editButtons">
+			<div>
+				<input v-model="editedName" placeholder="Naam:" type="text" />
+				<input v-model="editedDescription" placeholder="Beschrijving:" type="text" />
+			</div>
+			<div>
+				<button @click="editAttraction(id)">Save</button>
+				<button @click="cancelEditMode()">Cancel</button>
+			</div>
 			<p v-if="errorMessage">{{ errorMessage }}</p>
 		</div>
 		<div v-else>

@@ -73,8 +73,12 @@ export default {
 				<input type="checkbox" id="fastpass" v-model="attraction.fastpass" required />
 			</div>
 			<div class="form-group">
-				<label for="disabled">Disabled:</label>
-				<input type="checkbox" id="disabled" v-model="attraction.disabled" />
+				<label for="url">Foto url:</label>
+				<input type="url" name="url" id="url" placeholder="https://image.com" pattern="https://.*" size="30" required />
+			</div>
+			<div class="form-group">
+				<label for="url1">Video url:</label>
+				<input type="url1" name="url1" id="url1" placeholder="https://video.com" pattern="https://.*" size="30" required />
 			</div>
 			<button type="submit">Create</button>
 		</form>

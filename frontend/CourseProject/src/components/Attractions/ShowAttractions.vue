@@ -71,8 +71,8 @@ export default {
 			<div class="attraction-actions">
 				<div class="buttonsHome">
 					<DeleteAttracions :id="attraction.id" @attraction-deleted="handleAttractionDeleted"></DeleteAttracions>
-					<EditAttraction :id="attraction.id" :name="attraction.name" :description="attraction.description" @attraction-edited="handelAttrationEdited"></EditAttraction>
 					<ReportBreakdown :attractionId="attraction.id" @breakdown-reported="handleBreakdownReported"></ReportBreakdown>
+					<EditAttraction :id="attraction.id" :name="attraction.name" :description="attraction.description" @attraction-edited="handelAttrationEdited"></EditAttraction>
 				</div>
 				<div class="attraction-info2">
 					<h3>Type:{{ attraction.categoryName }}</h3>
