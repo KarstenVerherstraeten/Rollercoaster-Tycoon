@@ -25,6 +25,10 @@ export default {
 					body: JSON.stringify({
 						name: this.editedName,
 						description: this.editedDescription,
+						buildyear: this.editedBuildyear,
+						capacity: this.editedCapacity,
+						minHeight: this.editedMinHeight,
+						maxHeight: this.editedMaxHeight,
 					}),
 					headers: {
 						"Content-Type": "application/json",
