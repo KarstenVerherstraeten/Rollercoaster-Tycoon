@@ -78,6 +78,7 @@ nav {
 
 .picture {
 	width: 40%;
+	object-fit: cover;
 }
 
 .attraction-info {

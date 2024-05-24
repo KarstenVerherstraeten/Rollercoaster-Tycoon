@@ -5,19 +5,35 @@ export default {
 			attraction: {
 				name: "",
 				description: "",
-				buildyear: "",
-				category: "",
+				buildYear: "",
+				categoryName: "",
 				capacity: "",
 				minHeight: "",
 				maxHeight: "",
-				categoryName: "",
 				fastpass: false,
 				disabled: false,
-				picture: "", // Toegevoegd veld voor foto URL
+				picture: "",
+				video: "",
 			},
+			categories: []
 		};
 	},
+	created() {
+		this.fetchCategories();
+	},
 	methods: {
+		async fetchCategories() {
+			try {
+				const response = await fetch("http://localhost:1234/categories");
+				if (!response.ok) {
+					throw new Error("Failed to fetch categories");
+				}
+				const data = await response.json();
+				this.categories = data.map(category => category.name); // Assume each category object has a 'name' property
+			} catch (error) {
+				console.error("Error fetching categories:", error);
+			}
+		},
 		createAttraction() {
 			fetch("http://localhost:1234/attractions", {
 				method: "POST",
@@ -46,15 +62,15 @@ export default {
 				<textarea id="description" v-model="attraction.description" required></textarea>
 			</div>
 			<div class="form-group">
-				<label for="buildyear">Buildyear:</label>
-				<input type="number" id="buidlyear" v-model="attraction.buildyear" required />
+				<label for="buildYear">Buildyear:</label>
+				<input type="number" id="buildYear" v-model="attraction.buildYear" required />
 			</div>
 			<div class="form-group">
 				<label for="category">Category:</label>
 				<select id="category" v-model="attraction.categoryName" required>
-					<option value="Rollercoaster">Rollercoaster</option>
-					<option value="water-ride">Water Ride</option>
-					<option value="carousel">Carousel</option>
+					<option v-for="category in categories" :key="category" :value="category">
+						{{ category }}
+					</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -71,15 +87,15 @@ export default {
 			</div>
 			<div class="form-group">
 				<label for="fastpass">Fastpass:</label>
-				<input type="checkbox" id="fastpass" v-model="attraction.fastpass" required />
+				<input type="checkbox" id="fastpass" v-model="attraction.fastpass" />
 			</div>
 			<div class="form-group">
-				<label for="url">Foto url:</label>
+				<label for="url">Photo URL:</label>
 				<input type="url" id="url" v-model="attraction.picture" placeholder="https://image.com" pattern="https://.*" size="30" required />
 			</div>
 			<div class="form-group">
-				<label for="url1">Video url:</label>
-				<input type="url1" name="url1" id="url1" placeholder="https://video.com" pattern="https://.*" size="30" required />
+				<label for="url1">Video URL:</label>
+				<input type="url" name="url1" id="url1" v-model="attraction.video" placeholder="https://video.com" pattern="https://.*" size="30" required />
 			</div>
 			<button type="submit">Create</button>
 		</form>
