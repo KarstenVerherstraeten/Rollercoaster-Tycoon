@@ -8,7 +8,7 @@
 				<iframe
 					width="100%"
 					height="356"
-					:src="`${selectedAttraction.video}`"
+					:src="selectedAttraction.video"
 					title="YouTube video player"
 					frameborder="0"
 					allowfullscreen
@@ -18,6 +18,7 @@
 				<p><strong>Description:</strong> {{ selectedAttraction.description }}</p>
 				<p><strong>Build Year:</strong> {{ selectedAttraction.buildYear }}</p>
 				<p><strong>Capacity:</strong> {{ selectedAttraction.capacity }}</p>
+				<p><strong>Scare Factors:</strong> {{ scareFactorNames }}</p>
 				<p><strong>Minimum Height:</strong> {{ selectedAttraction.minHeight }}</p>
 				<p><strong>Maximum Height:</strong> {{ selectedAttraction.maxHeight }}</p>
 				<p><strong>Fastpass:</strong> {{ selectedAttraction.fastPass ? "Yes" : "No" }}</p>
@@ -38,6 +39,14 @@ export default {
 			selectedAttraction: null,
 			nextMaintenanceDate: null,
 		};
+	},
+	computed: {
+		scareFactorNames() {
+			if (this.selectedAttraction && this.selectedAttraction.scareFactors) {
+				return this.selectedAttraction.scareFactors.map(sf => sf.name).join(", ");
+			}
+			return "";
+		}
 	},
 	created() {
 		const attractionId = this.$route.params.id;
@@ -72,7 +81,7 @@ export default {
 				? new Date(Math.max(...breakdowns.map(b => new Date(b.date).getTime())))
 				: null;
 
-			const defaultPeriod = 2; // Default maintenance period in days
+			const defaultPeriod = 2;
 			const maintenancePeriod = this.selectedAttraction.maintenancePeriod || defaultPeriod;
 
 			const nextMaintenance = lastBreakdownDate
